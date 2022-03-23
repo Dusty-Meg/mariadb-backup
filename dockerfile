@@ -1,4 +1,4 @@
-FROM alpine:3.11.6
+FROM alpine:3.15.1
 
 # TODO: don't use root
 RUN apk add --no-cache mysql-client tar xz
