@@ -1,0 +1,4 @@
+[client]
+# MariaDB 11.4+ clients verify the server certificate by default, which fails against
+# MySQL's auto-generated self-signed certificate. Connections stay on the private Docker network.
+ssl-verify-server-cert=0

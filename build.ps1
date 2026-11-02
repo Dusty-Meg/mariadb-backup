@@ -1,2 +1,2 @@
-docker build -f Dockerfile -t cloud.canister.io:5000/dustymeg/mariadb-backup .
-docker push cloud.canister.io:5000/dustymeg/mariadb-backup
+wslc build -f dockerfile -t registry.mmoore.uk/dustymeg/mariadb-backup .
+wslc push registry.mmoore.uk/dustymeg/mariadb-backup

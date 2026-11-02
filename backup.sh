@@ -6,13 +6,13 @@ DATE=`date +"%Y%m%d-%H%M%S"`
 CREDENTIALS="-u ${MARIADB_USER} -p${MARIADB_PASSWORD} -h ${MARIADB_HOST} -P ${MARIADB_PORT}"
 
 # Get the list of databases but <Database> and <information_schema>
-LIST_DATABASES=$(mysql ${CREDENTIALS} -e "SHOW DATABASES;" | grep -Ev "(Database|information_schema)")
+LIST_DATABASES=$(mariadb ${CREDENTIALS} -e "SHOW DATABASES;" | grep -Ev "(Database|information_schema)")
 
 # cd ${BACKUP_FOLDER}
 for database in ${LIST_DATABASES}; do
     echo "Starting backup of ${database} at $(date "+%F %T")"
     # Backup database in sql file
-    mysqldump ${CREDENTIALS} ${database} > ${DATE}_${database}.sql #| gzip > ${DATE}_${database}.sql.gz
+    mariadb-dump ${CREDENTIALS} ${database} > ${DATE}_${database}.sql #| gzip > ${DATE}_${database}.sql.gz
     echo "Finished backup of ${database} at $(date "+%F %T")"
     if [ "$USE_COMPRESS" = true ]; then
         echo "Starting compression of ${database} at $(date "+%F %T")"

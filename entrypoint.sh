@@ -18,7 +18,7 @@ fi
 
 # Test database connectivity
 CREDENTIALS="-u ${MARIADB_USER} -p${MARIADB_PASSWORD} -h ${MARIADB_HOST} -P ${MARIADB_PORT}"
-mysql ${CREDENTIALS} -e ";"
+mariadb ${CREDENTIALS} -e ";"
 RET=$?
 if [ ${RET} -ne 0 ]; then
     echo "FAIL: connection to ${MARIADB_HOST} failed"
