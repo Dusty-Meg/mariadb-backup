@@ -17,7 +17,7 @@ for database in ${LIST_DATABASES}; do
     if [ "$USE_COMPRESS" = true ]; then
         echo "Starting compression of ${database} at $(date "+%F %T")"
         # Compress sql file with best compression with xz
-        XZ_OPT="-9e -T4" tar -Jcf ${DATE}_${database}.sql.tar.xz ${DATE}_${database}.sql
+        XZ_OPT="-6 -T4" tar -Jcf ${DATE}_${database}.sql.tar.xz ${DATE}_${database}.sql
         echo "Finished compression of ${database} at $(date "+%F %T")"
         # Delete sql file
         rm ${DATE}_${database}.sql
